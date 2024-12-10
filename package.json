@@ -1,0 +1,23 @@
+{
+  "name": "t-stark",
+  "version": "1.0.0",
+  "description": "Herramienta para facilitar la creacion de tu Bot de Discord.js",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/t-starks/t-stark.git"
+  },
+  "keywords": [
+    "ts"
+  ],
+  "author": "T. Stark",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/t-starks/t-stark/issues"
+  },
+  "homepage": "https://github.com/t-starks/t-stark#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "discord.js": "^14.7.1"
+  }
+}
