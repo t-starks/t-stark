@@ -17,12 +17,6 @@
 npm install t-stark
 ```
 
-### Usando yarn
-
-```bash
-yarn add t-stark
-```
-
 ## Requisitos
 
 - Node.js v16.0.0 o superior.
@@ -62,15 +56,15 @@ const Discord = require('discord.js');
 const TStark = require('t-stark');
 
 // Crear el cliente de Discord
-const client = new Discord.Client();
-
-// Inicializar el bot con T-Stark
-TStark.initializeBot(client);
+const client = new Discord.Client({
+  intents: [53608447]
+});
 
 // Mostrar el login de inicio
-client.once('ready', () => {
-  TStark.showReady(client);
-  console.log('Bot listo y en línea!');
+client.on('ready', () => {
+    TStark.showReady(client);
+    TStark.presence(client, 1, "GTA San Andreas Multi Player!");
+    TStark.initializeBot(client);
 });
 
 // Iniciar sesión con el token

@@ -1,32 +1,57 @@
+const { ActivityType } = require('discord.js');
 /**
- * Establece la presencia del bot.
- * @param {Object} client - La instancia del cliente de Discord.js autenticado.
- * @param {number} type - El tipo de presencia (1, 2, 3, 4).
- * @param {string} text - El texto que se mostrará en la presencia.
+ * Configura la presencia del bot.
+ * @param {Object} client client
+ * @param {number} type - El tipo de actividad (0: Jugar, 1: Transmitir, 2: Escuchar, 3: Ver, 4: Personalizado, 5: Compitiendo).
+ * @param {string} text - El texto de la presencia.
  */
 function presence(client, type, text) {
-    if (type === 1) {
-      client.user.setPresence({
-        activities: [{ name: text, type: 'PLAYING' }],
-        status: 'online',
-      });
-    } else if (type === 2) {
-      client.user.setPresence({
-        activities: [{ name: text, type: 'WATCHING' }],
-        status: 'idle',
-      });
-    } else if (type === 3) {
-      client.user.setPresence({
-        activities: [{ name: text, type: 'LISTENING' }],
-        status: 'dnd', // Do Not Disturb
-      });
-    } else if (type === 4) {
-      client.user.setPresence({
-        activities: [{ name: text, type: 'COMPETING' }],
-        status: 'invisible',
-      });
+    if (!client.user) {
+        console.error('Error: El cliente no está autenticado correctamente.');
+        return;
     }
-  }
-  
-  module.exports = presence;
-  
+
+    switch (type) {
+        case 0: // Playing
+            client.user.setPresence({
+                status: 'online',
+                activities: [{ name: text, type: ActivityType.Playing }]
+            });
+            break;
+        case 1: // Streaming
+            client.user.setPresence({
+                status: 'online',
+                activities: [{ name: text, type: ActivityType.Streaming }]
+            });
+            break;
+        case 2: // Listening
+            client.user.setPresence({
+                status: 'online',
+                activities: [{ name: text, type: ActivityType.Listening }]
+            });
+            break;
+        case 3: // Watching
+            client.user.setPresence({
+                status: 'online',
+                activities: [{ name: text, type: ActivityType.Watching }]
+            });
+            break;
+        case 4: // Custom Status
+            client.user.setPresence({
+                status: 'online',
+                activities: [{ name: text, type: ActivityType.Custom }]
+            });
+            break;
+        case 5: // Competing
+            client.user.setPresence({
+                status: 'online',
+                activities: [{ name: text, type: ActivityType.Competing }]
+            });
+            break;
+        default:
+            console.error('Error: Tipo de presencia inválido. Usa un valor entre 0 y 5.');
+            return;
+    }
+}
+
+module.exports = presence;
