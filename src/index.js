@@ -4,6 +4,7 @@ const fs = require('fs');
 
 const { loadMessageCommands } = require('./utils/prefix_commands');
 const { loadSlashCommands } = require('./utils/slash_commands');
+
 const showReady = require('./utils/ready');
 const presence = require('./utils/presence');
 
