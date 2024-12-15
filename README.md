@@ -34,7 +34,7 @@ Antes de empezar, necesitas crear un archivo `config.json` o usar variables de e
 ```json
 {
   "token": "TU_TOKEN_DEL_BOT",
-  "CLIENT_ID": "TU_ID_DE_CLIENTE",
+  "clientId": "TU_ID_DE_CLIENTE",
   "prefix": "!" 
 }
 ```
@@ -49,11 +49,12 @@ PREFIX=!
 
 ### 2. Crear el Bot
 
-En tu archivo principal de bot (`bot.js`), puedes importar y usar **T-Stark** para configurar tu bot:
+En tu archivo principal de bot (`index.js`), puedes importar y usar **T-Stark** para configurar tu bot:
 
 ```javascript
 const Discord = require('discord.js');
 const TStark = require('t-stark');
+const config = require('./config.json');
 
 // Crear el cliente de Discord
 const client = new Discord.Client({
@@ -63,12 +64,12 @@ const client = new Discord.Client({
 // Mostrar el login de inicio
 client.on('ready', () => {
     TStark.showReady(client);
-    TStark.presence(client, 1, "GTA San Andreas Multi Player!");
+    TStark.presence(client, 1, "Minecraft!");
     TStark.initializeBot(client);
 });
 
 // Iniciar sesión con el token
-client.login('TU_TOKEN_DEL_BOT');
+client.login(config.token);
 ```
 
 ### 3. Comandos
@@ -92,4 +93,4 @@ Si deseas contribuir a la librería **T-Stark**, siéntete libre de abrir un "pu
 
 ## Licencia
 
-Este proyecto está cubierto por la Licencia de Uso Restringido v1.0. Consulte el archivo [LICENSE](./LICENSE) para más información.
+Este proyecto está cubierto por la Licencia de Uso Restringido v1.0. Consulte el archivo [LICENSE](/LICENSE) para más información.
